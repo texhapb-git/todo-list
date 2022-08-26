@@ -1,0 +1,128 @@
+.app {
+	min-height: 100vh;
+	background: rgb(89, 200, 253);
+	background: linear-gradient(90deg, rgba(89, 200, 253, 1) 0%, rgba(68, 141, 244, 1) 100%);
+	padding: 30px 0;
+}
+
+.container {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+h1 {
+	margin: 0 0 20px;
+	font-size: 2rem;
+	text-transform: uppercase;
+	color: #fff;
+	text-align: center;
+	letter-spacing: 1px;
+}
+
+.add-form-block {
+	margin-bottom: 40px;
+}
+
+.add-form {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 10px 15px;
+	box-shadow: 2px 2px 8px rgb(0 0 0 / 20%);
+}
+
+.add-form__input {
+	width: 100%;
+	border: 0;
+	outline: 0;
+	font-size: 1.3rem;
+	line-height: 1;
+	margin-right: 10px;
+}
+
+.add-form__submit {
+	border: 0;
+	background-color: #3f6efe;
+	text-transform: uppercase;
+	color: #fff;
+	font-size: 1rem;
+	border-radius: 5px;
+	padding: 5px 10px;
+	letter-spacing: 1px;
+	cursor: pointer;
+	transition: .5s background-color ease-in;
+}
+
+.add-form__submit:hover {
+	background-color: #2e50bb;
+}
+
+.todo {
+	width: 100%;
+	background: #fff;
+	border-radius: 5px;
+	transition: .5s background-color ease-in;
+	padding: 25px 15px;
+}
+
+.todo__list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.todo__element {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #bfbfbf;
+}
+
+.todo__element:last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	border-bottom: 0;
+}
+
+.todo__content {
+	margin-right: 10px;
+}
+
+.todo__checkbox {
+	margin: 0;
+	margin-right: 7px;
+	cursor: pointer;
+	position: relative;
+	top: 1px;
+}
+
+.todo__title {
+	color: #696969;
+}
+
+.todo__element.done .todo__title {
+	text-decoration: line-through;
+}
+
+.todo__remove {
+	border: 0;
+	background: 0;
+	cursor: pointer;
+}
+
+.todo__remove-icon {
+	width: 15px;
+	height: 15px;
+	fill: rgb(119 119 119 / 40%);
+	transition: fill .3s ease-in-out;
+}
+
+.todo__remove:hover .todo__remove-icon {
+	fill: red;
+}
