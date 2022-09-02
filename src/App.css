@@ -126,3 +126,7 @@ h1 {
 .todo__remove:hover .todo__remove-icon {
 	fill: red;
 }
+
+.todo__empty{
+	margin: 0;
+}
