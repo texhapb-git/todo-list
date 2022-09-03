@@ -36,6 +36,32 @@ h1 {
 }
 
 .add-form__input {
+	position: relative;
+}
+
+.add-form__input-error {
+	position: absolute;
+	top: 100%;
+	left: -15px;
+	width: 100%;
+	margin-top: 10px;
+	background-color: #d03d3d;
+	color: #fff;
+	padding: 10px 15px;
+	border-radius: 5px;
+	font-size: 0.8rem;
+	line-height: 1;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity .4s ease, visibility .6s ease;
+}
+
+.add-form__input-error[data-show='true'] {
+	opacity: 1;
+	visibility: visible;
+}
+
+.add-form__input {
 	width: 100%;
 	border: 0;
 	outline: 0;
@@ -66,32 +92,49 @@ h1 {
 	background: #fff;
 	border-radius: 5px;
 	transition: .5s background-color ease-in;
-	padding: 25px 15px;
 }
 
 .todo__list {
 	margin: 0;
 	padding: 0;
 	list-style: none;
+	border-radius: 5px;
 }
 
 .todo__element {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 10px;
-	padding-bottom: 10px;
-	border-bottom: 1px solid #bfbfbf;
+	margin: 0;
+	padding: 0 15px;
+	border-bottom: 1px solid #e7e7e7;
+	position: relative;
+}
+
+.todo__element:first-child {
+	border-radius: 5px 5px 0 0;
 }
 
 .todo__element:last-child {
-	margin-bottom: 0;
-	padding-bottom: 0;
 	border-bottom: 0;
+	border-radius: 0 0 5px 5px;
 }
 
 .todo__content {
 	margin-right: 10px;
+	position: relative;
+	padding: 15px 0;
+	padding-left: 25px;
+	width: 100%;
+	cursor: pointer;
+}
+
+.todo__label {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	margin-top: 3px;
 }
 
 .todo__checkbox {
@@ -100,6 +143,35 @@ h1 {
 	cursor: pointer;
 	position: relative;
 	top: 1px;
+	display: none;
+}
+
+.todo__fake-checkbox {
+	position: relative;
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+}
+
+.todo__fake-checkbox .todo__check-empty {
+	width: 20px;
+	height: 20px;
+	fill: gray;
+}
+
+.todo__fake-checkbox .todo__check-checked {
+	width: 20px;
+	height: 20px;
+	fill: green;
+	display: none;
+}
+
+.todo__checkbox:checked+.todo__fake-checkbox .todo__check-empty {
+	display: none;
+}
+
+.todo__checkbox:checked+.todo__fake-checkbox .todo__check-checked {
+	display: inline-block;
 }
 
 .todo__title {
@@ -110,23 +182,108 @@ h1 {
 	text-decoration: line-through;
 }
 
-.todo__remove {
+.todo__bin {
 	border: 0;
 	background: 0;
 	cursor: pointer;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity .4s ease, visibility .6s ease;
 }
 
-.todo__remove-icon {
+.todo__element:hover .todo__bin {
+	opacity: 1;
+	visibility: visible;
+}
+
+.todo__bin-icon {
 	width: 15px;
 	height: 15px;
 	fill: rgb(119 119 119 / 40%);
 	transition: fill .3s ease-in-out;
 }
 
-.todo__remove:hover .todo__remove-icon {
+.todo__bin:hover .todo__bin-icon {
 	fill: red;
 }
 
-.todo__empty{
+.todo__remove {
+	position: absolute;
+	background-color: #fefefe;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 15px;
+	display: flex;
+	justify-content: space-between;
+	padding: 8px 10px 4px;
+	border: 1px solid #cdcdcd;
+	border-radius: 5px;
+	width: 80px;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity .4s ease, visibility .6s ease;
+}
+
+.todo__remove[data-show="true"] {
+	opacity: 1;
+	visibility: visible;
+}
+
+.todo__remove button {
+	cursor: pointer;
+	border: 0;
+	background: 0;
 	margin: 0;
+	padding: 0;
+}
+
+.todo__remove-check {
+	width: 21px;
+	height: 18px;
+	fill: green;
+	opacity: .6;
+}
+
+.todo__remove button:hover .todo__remove-check {
+	opacity: 1;
+}
+
+.todo__remove-cross {
+	width: 15px;
+	height: 15px;
+	fill: red;
+	opacity: .6;
+}
+
+.todo__remove button:hover .todo__remove-cross {
+	opacity: 1;
+}
+
+.todo__empty {
+	margin: 0;
+	padding: 15px;
+}
+
+@media (min-width: 1200px) {
+	.todo__element:hover {
+		background-color: #f5f5f5;
+	}
+}
+
+@media (max-width: 991.98px) {
+	.todo__bin {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.todo__remove-check {
+		opacity: 1;
+	}
+
+	.todo__remove-cross {
+		width: 15px;
+		height: 15px;
+		fill: red;
+		opacity: 1;
+	}
 }

@@ -1,4 +1,4 @@
-import IconsSVG from './assets/sprite.svg';
+import IconsSVG from './sprite.svg';
 
 function Icons({ name, color, size, className }) {
 	return (

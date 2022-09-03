@@ -11,7 +11,7 @@ function TodoList({todos}) {
 					})}
 				</ul>
 				:
-				<p className="todo__empty">There is nothing to do!</p>
+				<p className="todo__empty">There's nothing to do! You're a happy person!</p>
 		}
 		</div>
 	)
