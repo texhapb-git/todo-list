@@ -156,8 +156,6 @@
 		position: relative;
 		top: 1px;
 		display: none;
-
-
 	}
 
 	&__fake-checkbox {
@@ -180,11 +178,11 @@
 		display: none;
 	}
 
-	&__checkbox:checked+&__fake-checkbox &__check-empty {
+	&__element--done &__check-empty {
 		display: none;
 	}
 
-	&__checkbox:checked+&__fake-checkbox &__check-checked {
+	&__element--done &__check-checked {
 		display: inline-block;
 	}
 
