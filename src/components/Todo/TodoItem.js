@@ -23,12 +23,13 @@ function TodoItem({ todo }) {
 			<div className='todo__content' onClick={toggleTodo.bind(null, todo.id)}>
 				<label className="todo__label">
 
-					<input
+					{/* <input
 						type='checkbox'
 						checked={todo.completed}
 						className='todo__checkbox'
 						onChange={toggleTodo.bind(null, todo.id)}
-					/>
+					/> */}
+
 					<span className="todo__fake-checkbox">
 						<Icons name='check-empty' className='todo__check-empty' />
 						<Icons name='check-checked' className='todo__check-checked' />
