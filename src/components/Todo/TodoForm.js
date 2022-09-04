@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import TodoContext from "../../context/TodoContext";
 
 function TodoForm() {
-	const {addTodo} = useContext(TodoContext);
+	const { addTodo } = useContext(TodoContext);
 	const [value, setValue] = useState('');
 	const [isNotValid, setIsNotValid] = useState(false);
 
@@ -30,18 +30,18 @@ function TodoForm() {
 	}
 
 	function removePlaceholder(event) {
-			event.target.placeholder = '';
+		event.target.placeholder = '';
 	}
 
 	function addPlaceholder(event) {
-			event.target.placeholder = placeholder;
+		event.target.placeholder = placeholder;
 	}
 
 
 	return (
-		<div className='add-form-block'>
-			<form className='add-form' onSubmit={submitTodoForm}>
-				<div className="add-form__input">
+		<div className='add-form'>
+			<form className='add-form__form' onSubmit={submitTodoForm}>
+				<div className="add-form__input-block">
 					<input
 						type='text'
 						autoComplete="off"

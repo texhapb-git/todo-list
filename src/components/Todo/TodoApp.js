@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 import TodoContext from "../../context/TodoContext";
-import {v4} from 'uuid'
+import { v4 } from 'uuid'
 import Preloader from "../Preloader/Preloader";
 
 
@@ -63,9 +63,9 @@ function TodoApp() {
 	}
 
 	return (
-		<TodoContext.Provider value={{addTodo, removeTodo, toggleTodo}}>
+		<TodoContext.Provider value={{ addTodo, removeTodo, toggleTodo }}>
 			<div className='app'>
-				<div className='container'>
+				<div className='app__container'>
 
 					<h1>To-Do List</h1>
 					{
