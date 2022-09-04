@@ -116,13 +116,9 @@
 		border-bottom: 1px solid #e7e7e7;
 		position: relative;
 
-		&:first-child {
-			border-radius: 5px 5px 0 0;
-		}
 
 		&:last-child {
 			border-bottom: 0;
-			border-radius: 0 0 5px 5px;
 		}
 
 		@media (min-width: 1200px) {
@@ -132,37 +128,29 @@
 		}
 	}
 
-	&__content {
+
+	&__label {
+		width: 100%;
 		margin-right: 10px;
+		display: block;
 		position: relative;
 		padding: 15px 0;
 		padding-left: 25px;
-		width: 100%;
 		cursor: pointer;
-	}
-
-	&__label {
-		position: absolute;
-		left: 0;
-		top: 50%;
-		transform: translateY(-50%);
-		margin-top: 3px;
 	}
 
 	&__checkbox {
-		margin: 0;
-		margin-right: 7px;
-		cursor: pointer;
-		position: relative;
-		top: 1px;
 		display: none;
 	}
 
 	&__fake-checkbox {
-		position: relative;
+		position: absolute;
 		cursor: pointer;
 		width: 20px;
 		height: 20px;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
 	}
 
 	&__check-empty {

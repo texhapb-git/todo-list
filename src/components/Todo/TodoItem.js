@@ -20,25 +20,24 @@ function TodoItem({ todo }) {
 
 	return (
 		<li className={itemClasses.join(' ')}>
-			<div className='todo__content' onClick={toggleTodo.bind(null, todo.id)}>
-				<label className="todo__label">
 
-					{/* <input
-						type='checkbox'
-						checked={todo.completed}
-						className='todo__checkbox'
-						onChange={toggleTodo.bind(null, todo.id)}
-					/> */}
+			<label className="todo__label">
 
-					<span className="todo__fake-checkbox">
-						<Icons name='check-empty' className='todo__check-empty' />
-						<Icons name='check-checked' className='todo__check-checked' />
-					</span>
+				<input
+					type='checkbox'
+					checked={todo.completed}
+					className='todo__checkbox'
+					onChange={toggleTodo.bind(null, todo.id)}
+				/>
 
-				</label>
+				<span className="todo__fake-checkbox">
+					<Icons name='check-empty' className='todo__check-empty' />
+					<Icons name='check-checked' className='todo__check-checked' />
+				</span>
 
 				<span className='todo__title'>{todo.title}</span>
-			</div>
+
+			</label>
 
 			<button className='todo__bin' data-show={removing} onClick={toggleRemovePanel}>
 				<Icons name='bin' className='todo__bin-icon' />
