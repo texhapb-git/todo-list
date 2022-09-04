@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import TodoApp from './components/Todo/TodoApp';
 
 

@@ -1,4 +1,4 @@
-import './preloader.css'
+import './preloader.scss'
 
 function Preloader() {
 	return (
