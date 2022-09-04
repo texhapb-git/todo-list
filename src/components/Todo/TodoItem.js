@@ -15,7 +15,7 @@ function TodoItem({ todo }) {
 	const itemClasses = ['todo__element'];
 
 	if (todo.completed) {
-		itemClasses.push('done');
+		itemClasses.push('todo__element--done');
 	}
 
 	return (
@@ -39,9 +39,11 @@ function TodoItem({ todo }) {
 				<span className='todo__title'>{todo.title}</span>
 			</div>
 
-			<button className='todo__bin' onClick={toggleRemovePanel}>
+			<button className='todo__bin' data-show={removing} onClick={toggleRemovePanel}>
 				<Icons name='bin' className='todo__bin-icon' />
 			</button>
+
+			<div className="todo__remove-shadow" data-show={removing}></div>
 
 			<div className="todo__remove" data-show={removing}>
 				<button onClick={removeTodo.bind(null, todo.id)}>
