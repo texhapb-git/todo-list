@@ -28,11 +28,10 @@ function TodoApp() {
 	}, [todos, updateTodos]);
 
 	function getTodosFromLocalStorage() {
-		return JSON.parse(localStorage.getItem('todos'));
+		return JSON.parse(localStorage.getItem('todos')) || [];
 	}
 
 	function addTodosToLocalStorage(todos) {
-		//console.log('addStorageTodos', todos);
 		localStorage.setItem('todos', JSON.stringify(todos));
 	}
 
