@@ -6,7 +6,7 @@ function TodoForm() {
 	const [value, setValue] = useState('');
 	const [isNotValid, setIsNotValid] = useState(false);
 
-	const placeholder = 'Add new task';
+	const placeholder = 'Type new task title';
 
 	function ChangeValue(event) {
 		setValue(event.target.value);
