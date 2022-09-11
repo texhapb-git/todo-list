@@ -8,12 +8,10 @@ import Preloader from "../Preloader/Preloader";
 
 function TodoApp() {
 	const [loading, setLoading] = useState(false);
-	const [todos, setTodos] = useState([]);
+	const [todos, setTodos] = useState(getTodosFromLocalStorage());
 
 	useEffect(() => {
-		console.log('use1');
 		// async function fetchData() {
-		// 	console.log('1')
 		// 	setLoading(true);
 
 		// 	const promise = new Promise((resolve, reject) => {
@@ -29,13 +27,9 @@ function TodoApp() {
 
 		// fetchData();
 
-		setLoading(true);
-		setTodos(getTodosFromLocalStorage());
-		setLoading(false);
 	}, []);
 
 	useEffect(() => {
-		console.log('use2')
 		addTodosToLocalStorage(todos);
 	}, [todos]);
 
