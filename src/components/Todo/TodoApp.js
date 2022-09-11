@@ -8,31 +8,37 @@ import Preloader from "../Preloader/Preloader";
 
 function TodoApp() {
 	const [loading, setLoading] = useState(false);
-	const [updateTodos, setUpdateTodos] = useState(false);
-	const [todos, setTodos] = useState([]);
+	const [todos, setTodos] = useState(getTodosFromLocalStorage());
 
 	useEffect(() => {
-		setLoading(true);
-		setTimeout(() => {
-			setTodos(getTodosFromLocalStorage());
-			setLoading(false);
-		}, 1500);
+		// async function fetchData() {
+		// 	setLoading(true);
+
+		// 	const promise = new Promise((resolve, reject) => {
+		// 		setTimeout(resolve, 1500)
+		// 	})
+
+		// 	await promise.then(() => {
+		// 		console.log('promise');
+		// 		setTodos(getTodosFromLocalStorage());
+		// 		setLoading(false);
+		// 	});
+		// }
+
+		// fetchData();
 
 	}, []);
 
 	useEffect(() => {
-		if (updateTodos) {
-			addTodosToLocalStorage(todos);
-			setUpdateTodos(false);
-		}
-	}, [todos, updateTodos]);
+		addTodosToLocalStorage(todos);
+	}, [todos]);
 
 	function getTodosFromLocalStorage() {
 		return JSON.parse(localStorage.getItem('todos')) || [];
 	}
 
-	function addTodosToLocalStorage(todos) {
-		localStorage.setItem('todos', JSON.stringify(todos));
+	function addTodosToLocalStorage(data) {
+		localStorage.setItem('todos', JSON.stringify(data));
 	}
 
 	function addTodo(title) {
@@ -42,12 +48,10 @@ function TodoApp() {
 			completed: false
 		};
 		setTodos([...todos, newTodo]);
-		setUpdateTodos(true);
 	}
 
 	function removeTodo(id) {
 		setTodos(todos.filter(todo => todo.id !== id));
-		setUpdateTodos(true);
 	}
 
 	function toggleTodo(id) {
@@ -58,7 +62,6 @@ function TodoApp() {
 			return todo
 		}))
 
-		setUpdateTodos(true);
 	}
 
 	return (
