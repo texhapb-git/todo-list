@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 import TodoContext from "../../context/TodoContext";
 import { v4 } from 'uuid'
 import Preloader from "../Preloader/Preloader";
+import TodoControlPanel from "./TodoControlPanel";
+
 
 
 function TodoApp() {
 	const [loading, setLoading] = useState(false);
 	const [todos, setTodos] = useState(getTodosFromLocalStorage());
+	const [filterStatus, setFilterStatus] = useState('all');
 
 	useEffect(() => {
 		// async function fetchData() {
@@ -32,6 +35,14 @@ function TodoApp() {
 	useEffect(() => {
 		addTodosToLocalStorage(todos);
 	}, [todos]);
+
+	const modifiedTodos = useMemo(() => {
+		if (filterStatus === 'all') {
+			return todos;
+		} else {
+			return todos.filter(item => item.completed === filterStatus);
+		}
+	}, [todos, filterStatus])
 
 	function getTodosFromLocalStorage() {
 		return JSON.parse(localStorage.getItem('todos')) || [];
@@ -61,11 +72,14 @@ function TodoApp() {
 			}
 			return todo
 		}))
+	}
 
+	function changeStatus(status) {
+		setFilterStatus(status);
 	}
 
 	return (
-		<TodoContext.Provider value={{ addTodo, removeTodo, toggleTodo }}>
+		<TodoContext.Provider value={{ addTodo, removeTodo, toggleTodo, changeStatus }}>
 			<div className='app'>
 				<div className='app__container'>
 
@@ -75,9 +89,9 @@ function TodoApp() {
 							<Preloader /> :
 							<>
 								<TodoForm />
-								<TodoList todos={todos} />
+								<TodoControlPanel status={filterStatus} />
+								<TodoList todos={modifiedTodos} />
 							</>
-
 					}
 
 				</div>
