@@ -21,7 +21,7 @@
 }
 
 .add-form {
-	margin-bottom: 40px;
+	margin-bottom: 30px;
 
 	&__form {
 		width: 100%;
@@ -92,6 +92,45 @@
 	}
 
 }
+
+.todo__controls {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 15px;
+}
+
+.todo-filter {
+	border-radius: 5px;
+	box-shadow: 2px 2px 8px #00000020;
+	overflow: hidden;
+
+	&__button {
+		border: 1px solid #ccc;
+		width: 60px;
+		background: #fff;
+		border: 0;
+		padding: 10px 10px;
+		cursor: pointer;
+		border-right: 1px solid #ccc;
+		text-align: center;
+		font-size: 0.8rem;
+		line-height: 1;
+
+		&--active {
+			background: green;
+			border-color: green;
+			color: #fff;
+		}
+	}
+}
+
+
+.todo-filter__button:last-child {
+	border-right: 0;
+}
+
 
 .todo {
 	width: 100%;
