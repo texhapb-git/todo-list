@@ -1,15 +1,18 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import TodoContext from "../../context/TodoContext";
 
 function TodoForm() {
-	const { addTodo } = useContext(TodoContext);
+	const { dispatch } = useContext(TodoContext);
+
+	const inputRef = useRef(null);
+
 	const [value, setValue] = useState('');
 	const [isNotValid, setIsNotValid] = useState(false);
 
 	const placeholder = 'Type new task title';
 
 	function ChangeValue(event) {
-		setValue(event.target.value);
+		setValue(inputRef.current.value);
 		setIsNotValid(false);
 	}
 
@@ -20,21 +23,25 @@ function TodoForm() {
 		const title = value.trim();
 
 		if (title.length) {
-			addTodo(title);
+			dispatch({
+				type: 'add',
+				payload: title
+			});
 			setValue('');
 		} else {
 			setIsNotValid(true);
 		}
 
-		event.target[0].focus();
+		inputRef.current.focus();
 	}
 
-	function removePlaceholder(event) {
-		event.target.placeholder = '';
+	function removePlaceholder() {
+		inputRef.current.placeholder = '';
 	}
 
-	function addPlaceholder(event) {
-		event.target.placeholder = placeholder;
+	function addPlaceholder() {
+		inputRef.current.placeholder = placeholder;
+		setIsNotValid(false);
 	}
 
 
@@ -43,6 +50,7 @@ function TodoForm() {
 			<form className='add-form__form' onSubmit={submitTodoForm}>
 				<div className="add-form__input-block">
 					<input
+						ref={inputRef}
 						type='text'
 						autoComplete="off"
 						name='new-task-name'

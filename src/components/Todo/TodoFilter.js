@@ -2,7 +2,7 @@ import { useContext } from "react";
 import TodoContext from "../../context/TodoContext";
 
 function TodoFilter({ status }) {
-	const { changeStatus } = useContext(TodoContext);
+	const { dispatch } = useContext(TodoContext);
 
 	const buttons = [
 		{
@@ -26,7 +26,7 @@ function TodoFilter({ status }) {
 		<div className="todo-filter">
 			{buttons.map(button => {
 				const cls = button.status === status ? 'todo-filter__button--active' : '';
-				return <button className={`todo-filter__button ${cls}`} key={button.id} onClick={() => changeStatus(button.status)}>{button.title}</button>
+				return <button className={`todo-filter__button ${cls}`} key={button.id} onClick={() => dispatch({ type: 'changeFilter', payload: button.status })}>{button.title}</button>
 			})}
 		</div>
 	);

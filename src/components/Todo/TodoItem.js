@@ -4,18 +4,21 @@ import TodoContext from "../../context/TodoContext";
 
 
 function TodoItem({ todo }) {
-	const { removeTodo, toggleTodo } = useContext(TodoContext);
+	const { dispatch } = useContext(TodoContext);
 	const [removing, setRemoving] = useState(false);
 
 	function toggleRemovePanel() {
 		setRemoving(prev => !prev);
 	}
 
-
 	const itemClasses = ['todo__element'];
 
 	if (todo.completed) {
 		itemClasses.push('todo__element--done');
+	}
+
+	const handleChange = (id, value) => {
+		dispatch({ type: 'toggle', payload: { id, value } });
 	}
 
 	return (
@@ -27,7 +30,7 @@ function TodoItem({ todo }) {
 					type='checkbox'
 					checked={todo.completed}
 					className='todo__checkbox'
-					onChange={toggleTodo.bind(null, todo.id)}
+					onChange={() => handleChange(todo.id, !todo.completed)}
 				/>
 
 				<span className="todo__fake-checkbox">
@@ -46,7 +49,7 @@ function TodoItem({ todo }) {
 			<div className="todo__remove-shadow" data-show={removing}></div>
 
 			<div className="todo__remove" data-show={removing}>
-				<button onClick={removeTodo.bind(null, todo.id)}>
+				<button onClick={() => dispatch({ type: 'remove', payload: todo.id })}>
 					<Icons name='check' className='todo__remove-check' />
 				</button>
 
